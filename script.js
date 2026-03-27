@@ -78,4 +78,136 @@
         });
     });
 
+    // ============================================
+    // Contact Form
+    // ============================================
+
+    // IMPORTANT: Update this URL after deploying the Supabase edge function.
+    // Format: https://<project-ref>.supabase.co/functions/v1/contact-form
+    var CONTACT_FORM_URL = 'https://placeholder.supabase.co/functions/v1/contact-form';
+
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        var nameInput = document.getElementById('cf-name');
+        var emailInput = document.getElementById('cf-email');
+        var messageInput = document.getElementById('cf-message');
+        var submitBtn = document.getElementById('cf-submit');
+        var submitText = submitBtn.querySelector('.form-submit-text');
+        var submitLoading = submitBtn.querySelector('.form-submit-loading');
+        var successDiv = document.getElementById('cf-success');
+        var errorDiv = document.getElementById('cf-error-global');
+
+        function showFieldError(id, msg) {
+            var el = document.getElementById(id + '-error');
+            if (el) el.textContent = msg;
+            var input = document.getElementById(id);
+            if (input) input.classList.add('invalid');
+        }
+
+        function clearFieldError(id) {
+            var el = document.getElementById(id + '-error');
+            if (el) el.textContent = '';
+            var input = document.getElementById(id);
+            if (input) input.classList.remove('invalid');
+        }
+
+        function clearAllErrors() {
+            clearFieldError('cf-name');
+            clearFieldError('cf-email');
+            clearFieldError('cf-message');
+            errorDiv.style.display = 'none';
+            errorDiv.textContent = '';
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function validateForm() {
+            var valid = true;
+            clearAllErrors();
+
+            if (!nameInput.value.trim()) {
+                showFieldError('cf-name', 'Name is required.');
+                valid = false;
+            }
+
+            if (!emailInput.value.trim()) {
+                showFieldError('cf-email', 'Email is required.');
+                valid = false;
+            } else if (!validateEmail(emailInput.value.trim())) {
+                showFieldError('cf-email', 'Please enter a valid email address.');
+                valid = false;
+            }
+
+            if (!messageInput.value.trim()) {
+                showFieldError('cf-message', 'Message is required.');
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        // Clear errors on input
+        [nameInput, emailInput, messageInput].forEach(function (input) {
+            if (input) {
+                input.addEventListener('input', function () {
+                    clearFieldError(input.id);
+                });
+            }
+        });
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!validateForm()) return;
+
+            // Disable submit
+            submitBtn.disabled = true;
+            submitText.style.display = 'none';
+            submitLoading.style.display = 'inline';
+
+            var payload = {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                company: document.getElementById('cf-company').value.trim() || undefined,
+                message: messageInput.value.trim(),
+                service_interest: document.getElementById('cf-service').value || undefined
+            };
+
+            fetch(CONTACT_FORM_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(function (res) {
+                return res.json().then(function (data) {
+                    return { ok: res.ok, data: data };
+                });
+            })
+            .then(function (result) {
+                if (result.ok && result.data.success) {
+                    // Hide form fields, show success
+                    contactForm.querySelectorAll('.form-row, .form-group, .form-submit').forEach(function (el) {
+                        el.style.display = 'none';
+                    });
+                    successDiv.style.display = 'block';
+                } else {
+                    errorDiv.textContent = result.data.error || 'Something went wrong. Please try again.';
+                    errorDiv.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitText.style.display = 'inline';
+                    submitLoading.style.display = 'none';
+                }
+            })
+            .catch(function () {
+                errorDiv.textContent = 'Network error. Please check your connection and try again.';
+                errorDiv.style.display = 'block';
+                submitBtn.disabled = false;
+                submitText.style.display = 'inline';
+                submitLoading.style.display = 'none';
+            });
+        });
+    }
+
 })();

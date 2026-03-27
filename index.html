@@ -347,6 +347,62 @@
                 <h2>Let's Work Together</h2>
                 <p>For audit engagements, partnership inquiries, or general information.</p>
                 <a href="mailto:info@meridianglobalventures.com" class="contact-email">info@meridianglobalventures.com</a>
+
+                <div class="contact-divider">
+                    <span>or submit an inquiry</span>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cf-name">Name <span class="required">*</span></label>
+                            <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Your full name">
+                            <span class="form-error" id="cf-name-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="cf-email">Email <span class="required">*</span></label>
+                            <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="you@company.com">
+                            <span class="form-error" id="cf-email-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cf-company">Company</label>
+                            <input type="text" id="cf-company" name="company" autocomplete="organization" placeholder="Your company name">
+                        </div>
+                        <div class="form-group">
+                            <label for="cf-service">Service Interest</label>
+                            <select id="cf-service" name="service_interest">
+                                <option value="">Select a service...</option>
+                                <option value="security_audit">Security Audit</option>
+                                <option value="advisory">Advisory</option>
+                                <option value="architecture_review">Architecture Review</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cf-message">Message <span class="required">*</span></label>
+                        <textarea id="cf-message" name="message" required rows="5" placeholder="Tell us about your project or inquiry..."></textarea>
+                        <span class="form-error" id="cf-message-error"></span>
+                    </div>
+
+                    <button type="submit" class="form-submit" id="cf-submit">
+                        <span class="form-submit-text">Send Inquiry</span>
+                        <span class="form-submit-loading" style="display:none;">Sending...</span>
+                    </button>
+
+                    <div class="form-success" id="cf-success" style="display:none;">
+                        <div class="form-success-icon">&#10003;</div>
+                        <p><strong>Thank you for your inquiry.</strong></p>
+                        <p>We have received your message and will respond within one business day.</p>
+                    </div>
+
+                    <div class="form-error-global" id="cf-error-global" style="display:none;"></div>
+                </form>
             </div>
         </div>
     </section>

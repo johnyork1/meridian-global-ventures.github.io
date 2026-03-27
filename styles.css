@@ -717,6 +717,200 @@ img {
     box-shadow: 0 0 30px rgba(196, 164, 74, 0.25);
 }
 
+/* Contact Form Divider */
+.contact-divider {
+    display: flex;
+    align-items: center;
+    margin: 2.5rem 0;
+    gap: 1.5rem;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(176, 184, 192, 0.12);
+}
+
+.contact-divider span {
+    font-size: 0.8rem;
+    color: var(--silver);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group:only-child,
+.contact-form > .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 0.5rem;
+}
+
+.form-group .required {
+    color: var(--gold);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: var(--dark-grey);
+    border: 1px solid rgba(176, 184, 192, 0.12);
+    border-radius: 4px;
+    color: var(--white);
+    font-family: var(--font-main);
+    font-size: 0.925rem;
+    padding: 0.75rem 1rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+    width: 100%;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(176, 184, 192, 0.35);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: rgba(196, 164, 74, 0.4);
+    box-shadow: 0 0 0 3px rgba(196, 164, 74, 0.08);
+}
+
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: rgba(220, 50, 50, 0.5);
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B0B8C0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: var(--dark-grey);
+    color: var(--white);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-error {
+    font-size: 0.75rem;
+    color: #e05555;
+    margin-top: 0.35rem;
+    min-height: 1rem;
+}
+
+.form-submit {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 2rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    color: var(--gold);
+    font-family: var(--font-main);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--transition);
+    margin-top: 0.5rem;
+}
+
+.form-submit:hover:not(:disabled) {
+    background: var(--gold);
+    color: var(--black);
+    box-shadow: 0 0 30px rgba(196, 164, 74, 0.25);
+}
+
+.form-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form-success {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(196, 164, 74, 0.25);
+    border-radius: 6px;
+    background: rgba(196, 164, 74, 0.05);
+}
+
+.form-success-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+}
+
+.form-success p {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+.form-success strong {
+    color: var(--white);
+}
+
+.form-error-global {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px solid rgba(220, 50, 50, 0.3);
+    border-radius: 4px;
+    background: rgba(220, 50, 50, 0.06);
+    color: #e05555;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .form-row .form-group {
+        margin-bottom: 1.25rem;
+    }
+}
+
 /* ============================================
    Footer
    ============================================ */
