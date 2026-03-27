@@ -84,7 +84,7 @@
 
     // IMPORTANT: Update this URL after deploying the Supabase edge function.
     // Format: https://<project-ref>.supabase.co/functions/v1/contact-form
-    var CONTACT_FORM_URL = 'https://placeholder.supabase.co/functions/v1/contact-form';
+    var CONTACT_FORM_URL = 'https://crgudubunywtlkbejzvc.supabase.co/functions/v1/contact-form';
 
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
