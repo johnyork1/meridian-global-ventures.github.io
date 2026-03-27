@@ -177,7 +177,11 @@
 
             fetch(CONTACT_FORM_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyZ3VkdWJ1bnl3dGxrYmVqenZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyOTQ1MzEsImV4cCI6MjA4Njg3MDUzMX0.g3OrE46yPVl8uLIlPB9eHc7SMeoEF55uzM0ImyaER1E',
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyZ3VkdWJ1bnl3dGxrYmVqenZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyOTQ1MzEsImV4cCI6MjA4Njg3MDUzMX0.g3OrE46yPVl8uLIlPB9eHc7SMeoEF55uzM0ImyaER1E'
+                },
                 body: JSON.stringify(payload)
             })
             .then(function (res) {
