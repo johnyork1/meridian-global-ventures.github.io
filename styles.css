@@ -429,6 +429,82 @@ img {
 }
 
 /* ============================================
+   AI-Native Audit Team
+   ============================================ */
+
+.audit-team {
+    margin-top: 5rem;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(176, 184, 192, 0.08);
+}
+
+.audit-team h3 {
+    font-size: 1.5rem;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.audit-team-lead {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--silver-light);
+}
+
+.audit-roster {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.roster-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(176, 184, 192, 0.06);
+    border-radius: 6px;
+    transition: border-color var(--transition);
+}
+
+.roster-item:hover {
+    border-color: rgba(196, 164, 74, 0.2);
+}
+
+.roster-marker {
+    width: 3px;
+    min-height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.roster-item h4 {
+    font-size: 0.95rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.roster-item p {
+    font-size: 0.825rem;
+    line-height: 1.6;
+    color: var(--silver);
+}
+
+@media (max-width: 768px) {
+    .audit-roster {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
    Capabilities
    ============================================ */
 
